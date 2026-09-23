@@ -20,7 +20,7 @@ public class Intake {
         //Set up motor
         biteof27.setDirection(DcMotorSimple.Direction.FORWARD);
         biteof27.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        biteof27.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        biteof27.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         fortnite = opMode.gamepad1;
     }
