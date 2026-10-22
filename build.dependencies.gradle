@@ -3,6 +3,18 @@ repositories {
     google() // Needed for androidx
 
     maven { url 'https://repo.dairy.foundation/releases/'}
+    repositories {
+        ivy {
+            url "file:/path/to/ivy-repo"
+            patternLayout {
+                artifact "[organisation]/[module]/[revision]/[artifact]-[revision].[ext]"
+                ivy      "[organisation]/[module]/[revision]/ivy.xml"
+            }
+            metadataSources {
+                ivyDescriptor()
+            }
+        }
+    }
 }
 
 dependencies {
@@ -18,5 +30,6 @@ dependencies {
 
     implementation 'com.pedropathing:revhub:3.0.1'
     implementation 'com.pedropathing:tuning:1.0.0'
+    implementation("com.example:mylibrary:1.0.0")
 }
 
