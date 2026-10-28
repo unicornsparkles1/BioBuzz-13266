@@ -10,6 +10,8 @@ public class Intake {
     private DcMotor biteof27;
     private Gamepad fortnite;
     private Gamepad etintrof;
+    public static double POWER = 1;
+    public static double NOPOWER = 0;
     public Intake (OpMode opMode) {
         HardwareMap hardwareMap = opMode.hardwareMap;
 
@@ -22,16 +24,26 @@ public class Intake {
         biteof27.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         fortnite = opMode.gamepad1;
+        etintrof = opMode.gamepad2;
     }
     public void teleOp() {
-        if (fortnite.left_trigger_pressed){
-            biteof27.setPower(.5);
+        if (etintrof.left_trigger_pressed){
+           go();
         }
-        else if (fortnite.right_trigger_pressed) {
-            biteof27.setPower(-.5);
+        else if (etintrof.right_trigger_pressed) {
+            no();
         }
         else{
-            biteof27.setPower(0);
+            none();
         }
+    }
+    public void go(){
+        biteof27.setPower(POWER);
+    }
+    public void no(){
+        biteof27.setPower(-POWER);
+    }
+    public void none(){
+        biteof27.setPower(NOPOWER);
     }
 }

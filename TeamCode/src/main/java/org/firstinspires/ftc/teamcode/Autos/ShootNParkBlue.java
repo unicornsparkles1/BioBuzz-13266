@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Autos;
 
 import static com.pedropathing.api.Paths.*;
+import static com.pedropathing.ivy.pedro.PedroCommands.*;
 import com.pedropathing.api.Paths;
 
 import com.pedropathing.api.PoseFactory;
@@ -13,10 +14,14 @@ import static com.pedropathing.ivy.Scheduler.schedule;
 import static com.pedropathing.ivy.commands.Commands.*;
 import static com.pedropathing.ivy.groups.Groups.sequential;
 import static com.pedropathing.ivy.pedro.PedroCommands.follow;
+import static org.firstinspires.ftc.teamcode.Subsystems.Shooter.POWER;
+
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.PedroPathing.Constants;
+import org.firstinspires.ftc.teamcode.Subsystems.Intake;
+import org.firstinspires.ftc.teamcode.Subsystems.Shooter;
 
 @Autonomous
 public class ShootNParkBlue extends LinearOpMode {
@@ -30,6 +35,10 @@ public class ShootNParkBlue extends LinearOpMode {
     private final Pose point2 = poseFactory.of(112.75, 109.75, 270);
     private final Pose point3 = poseFactory.of(112.75, 34.75, -90);
     private final Pose point4 = poseFactory.of(133.75, 34.75, 180);
+
+    Shooter StateFarm = new Shooter(this);
+    Intake intake = new Intake(this);
+
 
     // Autonomous routine
     public Command autoRoutine() {
@@ -50,6 +59,8 @@ public class ShootNParkBlue extends LinearOpMode {
 
         waitForStart();
         schedule(autoRoutine());
+        StateFarm.forward();
+        intake.teleOp();
 
         while (opModeIsActive()) {
             follower.update();
@@ -71,7 +82,8 @@ public class ShootNParkBlue extends LinearOpMode {
     public Path path1() {
         return Paths.line(start, path1).constant(path1);
     }
-
+    public Intake go;
+    public Shooter forward;
     public Path path2() {
         return Paths.line(path1, point2).constant(point2);
     }
@@ -84,4 +96,5 @@ public class ShootNParkBlue extends LinearOpMode {
         return Paths.line(point3, point4).constant(point4);
     }
 }
+
 
