@@ -38,7 +38,7 @@ public class measureDistance extends OpMode {
         } else {
             telemetry.addData("No Valid Target", "Found");
         }
-      //  telemetry.addData("camera angle", cameraAngle);
+       // telemetry.addData("camera angle", cameraAngle);
     }
 
     public double getDistance(double ty) {
@@ -46,7 +46,7 @@ public class measureDistance extends OpMode {
         double heightDifference = GOAL_HEIGHT - CAMERA_HEIGHT_CM;
 
         double knownDistance = 150;
-      //  double cameraAngle = Math.toDegrees(Math.atan((GOAL_HEIGHT_CAMERA_CM)/knownDistance)) - llResult.getty();
+    //   double cameraAngle = Math.toDegrees(Math.atan((GOAL_HEIGHT_CAMERA_CM)/knownDistance)) - llResult.getty();
 
         return heightDifference / Math.tan(Math.toRadians(angelToTarget));
 
