@@ -1,3 +1,4 @@
+/*
 //package org.firstinspires.ftc.teamcode.Autos;
 
 //import com.pedropathing.api.Paths;
@@ -167,4 +168,4 @@ public class AutoPath extends LinearOpMode {
 
     public Path path3() {
         return Paths.line(point2, point3).reverseTangent();
-    }
+    }*/
