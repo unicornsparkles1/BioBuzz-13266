@@ -29,7 +29,7 @@ public class Shooter {
 
         StateFarm = hardwareMap.get(DcMotor.class, "StateFarm");
 
-        StateFarm.setDirection(DcMotorSimple.Direction.REVERSE);
+        StateFarm.setDirection(DcMotorSimple.Direction.FORWARD);
         StateFarm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
