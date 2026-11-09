@@ -6,7 +6,10 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 public class measureDistance extends OpMode {
 
+    private static double GOAL_HEIGHT_CAMERA_CM;
     private Limelight3A limelight3A;
+    private double llResult;
+
 
     private double CAMERA_HEIGHT_CM = 18.5;
 
@@ -38,7 +41,7 @@ public class measureDistance extends OpMode {
         } else {
             telemetry.addData("No Valid Target", "Found");
         }
-       // telemetry.addData("camera angle", cameraAngle);
+        telemetry.addData("camera angle", CAMERA_ANGLE);
     }
 
     public double getDistance(double ty) {
@@ -46,7 +49,8 @@ public class measureDistance extends OpMode {
         double heightDifference = GOAL_HEIGHT - CAMERA_HEIGHT_CM;
 
         double knownDistance = 150;
-    //   double cameraAngle = Math.toDegrees(Math.atan((GOAL_HEIGHT_CAMERA_CM)/knownDistance)) - llResult.getty();
+
+        double cameraAngle = Math.toDegrees(Math.atan((GOAL_HEIGHT_CAMERA_CM)/knownDistance)) - llResult;
 
         return heightDifference / Math.tan(Math.toRadians(angelToTarget));
 
