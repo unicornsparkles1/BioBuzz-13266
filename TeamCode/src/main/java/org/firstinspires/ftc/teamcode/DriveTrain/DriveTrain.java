@@ -41,7 +41,7 @@ public class DriveTrain {
         //SET UP HUB POSITION
         IMU imu = hardwareMap.get(IMU.class, "imu");
         IMU.Parameters parameters = new IMU.Parameters(new RevHubOrientationOnRobot(
-                RevHubOrientationOnRobot.LogoFacingDirection.RIGHT,
+                RevHubOrientationOnRobot.LogoFacingDirection.LEFT,
                 RevHubOrientationOnRobot.UsbFacingDirection.UP));
 
         imu.initialize(parameters);
@@ -65,10 +65,10 @@ public class DriveTrain {
         rotX = rotX * 1.1; //counteract imperfect strafing
 
         double denominator = Math.max(Math.abs(rotY) + Math.abs(rotX) + Math.abs(rx), 1);
-        double frontLeft = (rotY - rotX + rx) / denominator * speed;
-        double backLeft = (rotY + rotX + rx) / denominator* speed;
-        double frontRight = (rotY - rotX - rx) / denominator* speed;
-        double backRight = (rotY +      rotX - rx) / denominator* speed;
+        double frontLeft  = (rotY + rotX + rx) / denominator * speed;
+        double backLeft   = (rotY - rotX + rx) / denominator * speed;
+        double frontRight = (rotY - rotX - rx) / denominator * speed;
+        double backRight  = (rotY + rotX - rx) / denominator * speed;
 
         leftFront.setPower(frontLeft);
         leftBack.setPower(backLeft);
